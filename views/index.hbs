@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>Eat-da-Burger</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <h2>Available Burgers</h2>
+          </div>
+          <div class="panel-body">
+            <ul class="burger-list">
+              {{#each burger}}
+                {{#unless devoured}}
+                <li>
+                  {{burgerName}}
+                  <form action="/{{id}}?_method=PUT" method="POST" class="formDevour">
+                    <input type="hidden" name="devoured" value="true">
+                    <button type="submit" class="btn btn-primary">Devour</button>
+                  </form>
+                </li>
+                {{/unless}}
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <h2>Devoured Burgers</h2>
+          </div>
+          <div class="panel-body">
+            <ul class="burger-list">
+              {{#each burger}}
+                {{#if devoured}}
+                <li>
+                  {{burgerName}}
+                </li>
+                {{/if}}
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-sm-12">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <h2>Add a burger</h2>
+          </div>
+          <div class="panel-body">
+            <form action="/" method="POST">
+              <div class="row"><textarea name="burgerName" cols="40" rows="5"></textarea></div>
+              <div class="row"><button type="submit" class="btnAddBurger btn btn-primary">Add Burger</button></div>
+              
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
